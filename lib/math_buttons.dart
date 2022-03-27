@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 Widget calcButton(String displayText, Color? btnColor, Color textColor) {
   return Expanded(
+    // Calculator Button
     child: ElevatedButton(
       style: ElevatedButton.styleFrom(
         primary: btnColor,

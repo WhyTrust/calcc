@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'math_buttons.dart';
 
+import 'logic.dart';
+
 class Calculator extends StatefulWidget {
   const Calculator({Key? key}) : super(key: key);
 
@@ -31,7 +33,7 @@ class _CalculatorState extends State<Calculator> {
                 Padding(
                   padding: EdgeInsets.all(10),
                   child: Text(
-                    "0",
+                    text,
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 100,
@@ -46,10 +48,10 @@ class _CalculatorState extends State<Calculator> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 // CALCULATOR BUTTONS
-                calcButton("AC", Colors.grey, Colors.black),
-                calcButton("+/-", Colors.grey, Colors.black),
-                calcButton("%", Colors.grey, Colors.black),
-                calcButton("/", Colors.amber[700], Colors.white),
+                calcButton("C", Colors.grey, Colors.black, insert),
+                calcButton("+/-", Colors.grey, Colors.black, insert),
+                calcButton("%", Colors.grey, Colors.black, insert),
+                calcButton("/", Colors.amber[700], Colors.white, insert),
               ],
             ),
             SizedBox(
@@ -59,10 +61,10 @@ class _CalculatorState extends State<Calculator> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 // CALCULATOR BUTTONS
-                calcButton("7", Colors.grey[850], Colors.white),
-                calcButton("8", Colors.grey[850], Colors.white),
-                calcButton("9", Colors.grey[850], Colors.white),
-                calcButton("x", Colors.amber[700], Colors.white),
+                calcButton("7", Colors.grey[850], Colors.white, insert),
+                calcButton("8", Colors.grey[850], Colors.white, insert),
+                calcButton("9", Colors.grey[850], Colors.white, insert),
+                calcButton("x", Colors.amber[700], Colors.white, insert),
               ],
             ),
             SizedBox(
@@ -72,10 +74,10 @@ class _CalculatorState extends State<Calculator> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 // CALCULATOR BUTTONS
-                calcButton("4", Colors.grey[850], Colors.white),
-                calcButton("5", Colors.grey[850], Colors.white),
-                calcButton("6", Colors.grey[850], Colors.white),
-                calcButton("-", Colors.amber[700], Colors.white),
+                calcButton("4", Colors.grey[850], Colors.white, insert),
+                calcButton("5", Colors.grey[850], Colors.white, insert),
+                calcButton("6", Colors.grey[850], Colors.white, insert),
+                calcButton("-", Colors.amber[700], Colors.white, insert),
               ],
             ),
             SizedBox(
@@ -85,10 +87,10 @@ class _CalculatorState extends State<Calculator> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 // CALCULATOR BUTTONS
-                calcButton("1", Colors.grey[850], Colors.white),
-                calcButton("2", Colors.grey[850], Colors.white),
-                calcButton("3", Colors.grey[850], Colors.white),
-                calcButton("+", Colors.amber[700], Colors.white),
+                calcButton("1", Colors.grey[850], Colors.white, insert),
+                calcButton("2", Colors.grey[850], Colors.white, insert),
+                calcButton("3", Colors.grey[850], Colors.white, insert),
+                calcButton("+", Colors.amber[700], Colors.white, insert),
               ],
             ),
             SizedBox(
@@ -107,17 +109,24 @@ class _CalculatorState extends State<Calculator> {
                     style: TextStyle(fontSize: 35),
                   ),
                   onPressed: () {
-                    // TODO
+                    insert("0");
                   },
                 ),
-                calcButton(".", Colors.grey[850], Colors.white),
-                calcButton("=", Colors.amber[700], Colors.white),
+                calcButton(".", Colors.grey[850], Colors.white, insert),
+                calcButton("=", Colors.amber[700], Colors.white, insert),
               ],
             ),
           ],
         ),
       ),
     );
+  }
+
+  dynamic text = "0";
+  void insert(input) {
+    setState(() {
+      text = getCalculations(input);
+    });
   }
 
   //Calculator logic

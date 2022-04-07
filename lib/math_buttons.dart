@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-Widget calcButton(String displayText, Color? btnColor, Color textColor) {
+Widget calcButton(
+    String displayText, Color? btnColor, Color textColor, Function insert) {
   return Expanded(
     // Calculator Button
     child: ElevatedButton(
@@ -11,7 +12,7 @@ Widget calcButton(String displayText, Color? btnColor, Color textColor) {
         splashFactory: InkSplash.splashFactory,
       ),
       onPressed: () {
-        // TODO
+        insert(displayText);
       },
       child: Text(
         displayText,

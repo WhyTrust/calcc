@@ -7,8 +7,8 @@ Widget calcButton(
     child: ElevatedButton(
       style: ElevatedButton.styleFrom(
         primary: btnColor,
-        shape: CircleBorder(),
-        padding: EdgeInsets.all(20),
+        shape: const CircleBorder(),
+        padding: const EdgeInsets.all(20),
         splashFactory: InkSplash.splashFactory,
       ),
       onPressed: () {

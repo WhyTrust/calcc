@@ -49,8 +49,8 @@ class _CalculatorState extends State<Calculator> {
               children: [
                 // CALCULATOR BUTTONS
                 calcButton("C", Colors.grey, Colors.black, insert),
-                calcButton("+/-", Colors.grey, Colors.black, insert),
-                calcButton("%", Colors.grey, Colors.black, insert),
+                calcButton("(", Colors.grey, Colors.black, insert),
+                calcButton(")", Colors.grey, Colors.black, insert),
                 calcButton("/", Colors.amber[700], Colors.white, insert),
               ],
             ),

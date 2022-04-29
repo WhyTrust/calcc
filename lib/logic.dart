@@ -1,38 +1,35 @@
-bool inError = false;
-bool wasComma = false;
-String wholeExpression = "";
-String previousInputs = "";
+import 'dart:math';
+import 'package:math_expressions/math_expressions.dart';
+
+String expression = "";
+String result = "0";
 
 String getCalculations(String input) {
   if (input == "C") {
-    inError = false;
-    wholeExpression = "";
-    previousInputs = "";
-    wasComma = false;
-    return "";
+    expression = "";
   } else if (input == "=") {
-    // TODO Return Calculation when = is pressed.
-  }
+    expression = expression.replaceAll("x", "*");
 
-  if (inError) {
-    return "Error";
-  }
-  wholeExpression = wholeExpression + input;
-  if (isNumeric(input) || input == ".") {
-    previousInputs += input;
-    if (input == ".") {
-      wasComma = true;
+    try {
+      Parser p = Parser();
+      Expression exp = p.parse(expression);
+
+      ContextModel cm = ContextModel();
+      result = "${exp.evaluate(EvaluationType.REAL, cm)}";
+    } catch (e) {
+      result = "Error.";
     }
+    return result;
+  } else {
+    expression += input;
   }
 
-  return wholeExpression;
+  return expression;
 }
 
 bool isNumeric(String s) {
   if (num.tryParse(s) == null) {
-    print("isntNr");
     return false;
   }
-  print("isNr");
   return true;
 }
